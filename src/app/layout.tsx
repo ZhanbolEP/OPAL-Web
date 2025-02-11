@@ -1,11 +1,12 @@
-import type { Metadata } from 'next'
-import localFont from 'next/font/local'
-import { Manrope, DM_Sans } from 'next/font/google'
-import { ClerkProvider } from '@clerk/nextjs'
+import type { Metadata } from 'next';
+import localFont from 'next/font/local';
+import { Manrope, DM_Sans } from 'next/font/google';
+import { ClerkProvider } from '@clerk/nextjs';
 
-import './globals.css'
-import { ThemeProvider } from '@/components/theme'
-import { Toaster } from 'sonner'
+import './globals.css';
+import { ThemeProvider } from '@/components/theme';
+import ReactQueryProvider from "@/lib/ReactQueryProvider";
+import { Toaster } from 'sonner';
 
 const manrope = DM_Sans({ subsets: ['latin'] })
 
@@ -28,7 +29,10 @@ export default function RootLayout({
             defaultTheme="dark"
             disableTransitionOnChange
           >
-                {children}
+            <ReactQueryProvider>
+              { children }
+            </ReactQueryProvider>
+                
           </ThemeProvider>
         </body>
       </html>
