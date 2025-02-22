@@ -14,7 +14,6 @@ export type WorkspaceProps = {
                 name: string
                 type: 'PUBLIC' | 'PERSONAL'                
             }
-        }
-
+        }[]
     }
 }

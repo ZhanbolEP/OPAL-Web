@@ -61,13 +61,33 @@ const Sidebar = ({ activeWorkspaceId }: Props) => {
                     {workspace.name}
                 </SelectItem>
             ))}
-               {workspace.members.length > 0 && workspace.members.map((workspace) => 
-                workspace.Workspace && <SelectItem
-                ></SelectItem>
-               )     
+               {workspace.members.length > 0 && 
+                workspace.members.map((workspace) => 
+                workspace.Workspace && <SelectItem 
+                value={workspace.Workspace.id}
+                key={workspace.Workspace.id}
+                >{workspace.Workspace.name}</SelectItem>
+               )}    
             </SelectGroup>
         </SelectContent>
       </Select>
+      <Modal
+            trigger={
+              <span className="text-sm cursor-pointer flex items-center justify-center bg-neutral-800/90  hover:bg-neutral-800/60 w-full rounded-sm p-[5px] gap-2">
+                <PlusCircle
+                  size={15}
+                  className="text-neutral-800/90 fill-neutral-500"
+                />
+                <span className="text-neutral-400 font-semibold text-xs">
+                  Invite To Workspace
+                </span>
+              </span>
+            }
+            title="Invite To Workspace"
+            description="Invite other users to your workspace"
+          >
+            <Search workspaceId={activeWorkspaceId} />
+          </Modal>
     </div>
   );
 };
